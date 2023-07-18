@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         InvDude Colab QOL for VladmandicColab
 // @namespace    inv_vladmandic
-// @version      v1.0.0
+// @version      v1.0.1
 // @description  Change custom-urls from input to textarea in my colab, and many more...
 // @author       InvDude
 // @match        https://colab.research.google.com/github/InvincibleDude/vladmandic-colab/blob/master/InvincibleDudes_Vladmandic_Colab.ipynb
@@ -237,6 +237,8 @@ const STYLE =  `
 
       if (GM_getValue("vladmandic-autoload", false)) {
         textArea.value = GM_getValue("vladmandic-qol", "");
+        textArea.dispatchEvent(new Event("input", { bubbles: true }));
+        textArea.dispatchEvent(new Event("change", { bubbles: true }));
       }
       // add textarea to the page
       div.appendChild(div2);
@@ -276,6 +278,8 @@ const STYLE =  `
 
       if (GM_getValue("vladmandic-autoload", false)) {
         input.value = GM_getValue("vladmandic-qol-huggingface", "");
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
       }
       div.appendChild(btnLoad);
       div.appendChild(btnSave);
