@@ -1,0 +1,34 @@
+div.tabitem.gradio-tabitem {
+  padding-left: 8px!important;
+  padding-bottom: 8px!important;
+  padding-right: 8px!important;
+  padding-top: 8px!important;
+}
+
+div.gradio-column.gap.compact {
+  padding-right: 5px !important;
+  padding-top: 5px !important;
+  padding-left: 5px !important;
+  padding-bottom: 5px !important;
+  border-style: none; 
+}
+
+#txt2img_row_dimension {
+  flex-direction: column;
+}
+
+#txt2img_dimensions_row {
+  align-content: stretch;
+}
+
+#txt2img_res_switch_btn {
+  align-self: stretch;
+}
+
+.block.gradio-accordion {
+  margin-bottom: 4px!important;
+}
+
+div.block.gradio-accordion.padded {
+  border-radius: 8px!important;
+}
