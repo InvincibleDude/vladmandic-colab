@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         InvDude Colab QOL for VladmandicColab
 // @namespace    inv_vladmandic
-// @version      v1.0.1
+// @version      v1.0.2
 // @description  Change custom-urls from input to textarea in my colab, and many more...
 // @author       InvDude
 // @match        https://colab.research.google.com/github/InvincibleDude/vladmandic-colab/blob/master/InvincibleDudes_Vladmandic_Colab.ipynb
@@ -26,7 +26,7 @@ const STYLE =  `
     resize: vertical;
   }
   textarea#vladmandic-qol::placeholder, input#vladmandic-qol-huggingface::placeholder {
-    color: #3bd7ffcc;
+    color: #0cd189;
   }
 
   textarea#vladmandic-qol:focus, input#vladmandic-qol-huggingface:focus {
