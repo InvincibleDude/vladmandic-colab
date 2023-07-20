@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         InvDude Colab QOL for VladmandicColab
 // @namespace    inv_vladmandic
-// @version      v1.0.2
+// @version      v1.1.0
 // @description  Change custom-urls from input to textarea in my colab, and many more...
 // @author       InvDude
 // @match        https://colab.research.google.com/github/InvincibleDude/vladmandic-colab/blob/master/InvincibleDudes_Vladmandic_Colab.ipynb
@@ -149,7 +149,7 @@ const STYLE =  `
     // Add everything
     function addThemAll() {
       const paperInput = document.querySelector(
-        "#formwidget-23-label + div > paper-input"
+        "#formwidget-29-label + div > paper-input"
       );
 
       const textBox = paperInput.shadowRoot.querySelector(
@@ -251,7 +251,7 @@ const STYLE =  `
     }
 
     function addHuggingface() {
-      const paperInput = document.querySelector('#formwidget-6-label + div > paper-input');
+      const paperInput = document.querySelector('#formwidget-12-label + div > paper-input');
       const input = paperInput.shadowRoot.querySelector("iron-input[id^='input'] > input");
 
 
@@ -278,6 +278,42 @@ const STYLE =  `
 
       if (GM_getValue("vladmandic-autoload", false)) {
         input.value = GM_getValue("vladmandic-qol-huggingface", "");
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      div.appendChild(btnLoad);
+      div.appendChild(btnSave);
+      paperInput.parentNode.appendChild(div);
+    }
+
+    function addNgrok() {
+      const paperInput = document.querySelector('#formwidget-10-label + div > paper-input');
+      const input = paperInput.shadowRoot.querySelector("iron-input[id^='input'] > input");
+
+
+      let div = document.createElement("div");
+      div.style.display = "flex";
+      div.style.gap = "5px";
+      div.style.margin = "8px";
+
+      let btnLoad = document.createElement("button");
+      btnLoad.id = 'vladmandic-qol-huggingface';
+      btnLoad.innerText = "Load";
+      btnLoad.addEventListener("click", () => {
+        input.value = GM_getValue("vladmandic-qol-ngrok", "");
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      let btnSave = document.createElement("button");
+      btnSave.id = 'vladmandic-qol-huggingface';
+      btnSave.innerText = "Save";
+      btnSave.addEventListener("click", () => {
+        GM_setValue("vladmandic-qol-ngrok", input.value);
+      });
+
+      if (GM_getValue("vladmandic-autoload", false)) {
+        input.value = GM_getValue("vladmandic-qol-ngrok", "");
         input.dispatchEvent(new Event("input", { bubbles: true }));
         input.dispatchEvent(new Event("change", { bubbles: true }));
       }
@@ -316,6 +352,7 @@ const STYLE =  `
     // Seperated to a function due to Mutation Observer
     addThemAll();
     addHuggingface();
+    addNgrok();
     const checkbox = addAutoLoadCheckbox();
 
     // Mutation Observer for permanent modification
@@ -332,6 +369,7 @@ const STYLE =  `
               // it doesn't exist, so add it back
               addThemAll();
               addHuggingface();
+              addNgrok();
             }
           }
         }
