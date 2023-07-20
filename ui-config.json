@@ -19,7 +19,7 @@
     "txt2img/\u2195\ufe0f/visible": true,
     "txt2img/Refresh/visible": true,
     "txt2img/Sampling method/visible": true,
-    "txt2img/Sampling method/value": "DPM 2M Karras",
+    "txt2img/Sampling method/value": "DPM++ 2M SDE Karras",
     "txt2img/Sampling steps/visible": true,
     "txt2img/Sampling steps/value": 24,
     "txt2img/Sampling steps/minimum": 1,
